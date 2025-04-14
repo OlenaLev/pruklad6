@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Адаптивне меню</title>
+    <link rel="stylesheet" href="menu-style.css" />
+  </head>
+  <body>
+    <header>
+      <button class="burger-menu" onclick="toggleMenu()">☰</button>
+      <h1>САЙТ ВЧИТЕЛЯ ІНФОРМАТИКИ</h1>
+      <div class="blue-bar">
+        <img src="logo1.jpg" alt="Логотип" class="logo" />
+      </div>
+    </header>
+
+    <!-- кнопка адаптації тільки для мобільної версії -->
+    <div class="mobile-adapt-button">
+      <button class="adapt-button"></button>
+    </div>
+    <nav class="menu">
+      <ul>
+        <li><a href="#">Головна</a></li>
+        <li><a href="#">Методичний порадник</a></li>
+        <li class="dropdown">
+          <a href="#" onclick="toggleSubmenu(event)">
+            Цифрова грамотність <span class="arrow"> </span>
+          </a>
+          <ul class="submenu">
+            <li class="dropdown-right">
+              <a href="#" onclick="toggleSubSubmenu(event)">
+                Основи роботи з ПК <span class="arrow"></span>
+              </a>
+              <ul class="submenu-right">
+                <li><a href="#">PDF</a></li>
+                <li><a href="#">Відео</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Безпека</a></li>
+            <li><a href="#">Медіаграмотність</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Підручники</a></li>
+        <li><a href="#">Софт</a></li>
+        <li><a href="#">Автор</a></li>
+      </ul>
+    </nav>
+
+    <script>
+      function toggleMenu() {
+        document.querySelector(".menu").classList.toggle("active");
+      }
+
+      function toggleSubmenu(e) {
+        if (window.innerWidth <= 480) {
+          e.preventDefault();
+          const parent = e.target.closest("li");
+          parent.classList.toggle("active");
+          const arrow = parent.querySelector(".arrow");
+          arrow.textContent = parent.classList.contains("active") ? "▲" : "▼";
+        }
+      }
+
+      function toggleSubSubmenu(e) {
+        if (window.innerWidth <= 480) {
+          e.preventDefault();
+          const parent = e.target.closest("li");
+          parent.classList.toggle("active");
+          const arrow = parent.querySelector(".arrow");
+          arrow.textContent = parent.classList.contains("active") ? "▼" : "▶";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,249 @@
+body {
+  background: url("02.jpg") no-repeat center/cover;
+  color: #d4ca37;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  background: url("02.jpg") no-repeat center/cover;
+  padding: 20px 10px 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #d4ca37;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.blue-bar {
+  background-color: #0056b3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+}
+
+.adapt-button {
+  background-color: white;
+  color: #0056b3;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.adapt-button:hover {
+  background-color: #e6e6e6;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 140px;
+}
+
+.burger-menu {
+  display: none;
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: #d4ca37;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.menu {
+  background: rgba(8, 11, 54, 0.9);
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu ul li {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px;
+  transition: background 0.3s ease;
+}
+
+.menu ul li a {
+  color: #d4ca37;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.menu ul li a:hover {
+  color: rgb(255, 214, 0);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.arrow {
+  margin-left: 5px;
+  font-size: 0.9em;
+}
+
+.menu ul .submenu,
+.menu ul .submenu .submenu-right {
+  background: rgba(8, 11, 54, 0.95);
+  font-size: 16px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border-radius: 10px;
+  padding: 0;
+  min-width: 220px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.menu ul .submenu .submenu-right {
+  top: 0;
+  left: 100%;
+}
+
+.menu ul li:hover > .submenu,
+.menu ul .dropdown-right:hover > .submenu-right {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu ul .submenu li,
+.menu ul .submenu .submenu-right li {
+  display: block;
+  text-align: left;
+}
+
+.menu ul .submenu li a,
+.menu ul .submenu .submenu-right li a {
+  padding: 10px;
+  color: #d4ca37;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .burger-menu {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: rgba(8, 11, 54, 0.95);
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    animation: slideDown 0.4s ease forwards;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .menu ul li {
+    display: block;
+    width: 100%;
+    margin: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .menu ul li a {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 20px;
+  }
+
+  .menu ul .submenu,
+  .menu ul .submenu .submenu-right {
+    position: static;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    background: rgba(8, 11, 54, 0.9);
+  }
+
+  .menu ul li.active > .submenu,
+  .menu ul .submenu li.active > .submenu-right {
+    display: block;
+    animation: fadeIn 0.3s ease forwards;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.mobile-adapt-button {
+  text-align: center;
+  padding: 10px;
+  background-color: #0056b3;
+}
+
+@media (min-width: 481px) {
+  .mobile-adapt-button {
+    display: none;
+  }
+}
+/* Сховати синю стрічку на десктопі */
+@media (min-width: 481px) {
+  .blue-bar {
+    display: none;
+  }
+}
+
+/* Показати стрічку тільки на мобільному */
+@media (max-width: 480px) {
+  .blue-bar {
+    display: flex;
+  }
+}
