@@ -1,0 +1,1 @@
+# pruklad6
